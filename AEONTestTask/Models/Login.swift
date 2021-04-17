@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Login: Codable {
+struct Login: Decodable {
     var success: String
     var response: Response
     
     
-    struct Response: Codable {
+    struct Response: Decodable {
         var token: String
     }
 }

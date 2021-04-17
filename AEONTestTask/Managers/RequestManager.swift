@@ -1,5 +1,5 @@
 //
-//  RequestProtocol.swift
+//  RequestManager.swift
 //  AEONTestTask
 //
 //  Created by Ivan on 16.04.2021.
@@ -9,14 +9,17 @@ import Foundation
 
 enum AddressesURLs: String {
     case login = "http://82.202.204.94/api-test/login"
-    case payments = "http://82.202.204.94/api-test/payments"
+    case payments = "http://82.202.204.94/api-test/payments?token="
 }
 
 protocol RequestProtocol {
     func signinRequest(login: String, password: String) -> URLRequest
+    func paymentsRequest(token: String) -> URLRequest
 }
 
-extension RequestProtocol {
+final class RequestManager: RequestProtocol {
+    
+    private var header = ["app-key" : "12345", "v" : "1"]
     
     func signinRequest(login: String, password: String) -> URLRequest {
         let url = URL(string: AddressesURLs.login.rawValue)!
@@ -26,17 +29,21 @@ extension RequestProtocol {
         let encoder = JSONEncoder()
         let data = try? encoder.encode(logPass)
         
-        let header = [
-            "app-key" : "12345",
-            "v" : "1"
-        ]
-        
         if let data = data {
             request.httpBody = data
             request.httpMethod = "POST"
             request.allHTTPHeaderFields = header
         }
         
-       return request
+        return request
+    }
+    
+    func paymentsRequest(token: String) -> URLRequest {
+        let url = URL(string: AddressesURLs.payments.rawValue + token)!
+        var request = URLRequest(url: url)
+        
+        request.allHTTPHeaderFields = header
+        
+        return request
     }
 }

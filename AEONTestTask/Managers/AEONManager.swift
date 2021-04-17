@@ -7,26 +7,20 @@
 
 import Foundation
 
-final class AEONManager: RequestProtocol, APIProtocol {
+final class AEONManager {
     
-    var sessionConfiguration: URLSessionConfiguration
-    
-    lazy var session: URLSession = {
-        return URLSession(configuration: self.sessionConfiguration)
-    }()
-    
-    init(sessionConfiguration: URLSessionConfiguration) {
-        self.sessionConfiguration = sessionConfiguration
-    }
-    
-    convenience init() {
-        self.init(sessionConfiguration: URLSessionConfiguration.default)
-    }
+    // MARK: - Private Properties
+    private let requestManager: RequestProtocol = RequestManager()
+    private let apiManager: APIProtocol = APIManager()
     
     func signin(login: String, password: String, completion: @escaping (Result<Login, Error>) -> Void) {
-        let request = signinRequest(login: login, password: password)
-        fetch(request: request, completionHandler: completion)
+        let request = requestManager.signinRequest(login: login, password: password)
+        apiManager.fetch(request: request, completionHandler: completion)
     }
     
+    func getPayments(token: String, completion: @escaping (Result<Payments, Error>) -> Void) {
+        let request = requestManager.paymentsRequest(token: token)
+        apiManager.fetch(request: request, completionHandler: completion)
+    }
     
 }

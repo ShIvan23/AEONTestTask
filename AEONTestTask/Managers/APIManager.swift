@@ -14,14 +14,28 @@ protocol APIProtocol {
     var sessionConfiguration: URLSessionConfiguration { get }
     var session: URLSession { get }
     
-    func fetch<T: Codable>(request: URLRequest, completionHandler: @escaping (Result<T, Error>) -> Void)
+    func fetch<T: Decodable>(request: URLRequest, completionHandler: @escaping (Result<T, Error>) -> Void)
 }
 
-extension APIProtocol {
+final class APIManager: APIProtocol {
     
-    func fetch<T: Codable>(request: URLRequest, completionHandler: @escaping (Result<T, Error>) -> Void) {
+    var sessionConfiguration: URLSessionConfiguration
+    
+    lazy var session: URLSession = {
+        return URLSession(configuration: self.sessionConfiguration)
+    }()
+    
+    init(sessionConfiguration: URLSessionConfiguration) {
+        self.sessionConfiguration = sessionConfiguration
+    }
+    
+    convenience init() {
+        self.init(sessionConfiguration: URLSessionConfiguration.default)
+    }
+    
+    func fetch<T: Decodable>(request: URLRequest, completionHandler: @escaping (Result<T, Error>) -> Void) {
         
-        let dataTask = JSONTask(request: request) { (data, _, error) in
+        let dataTask = JSONTask(request: request) { [weak self] (data, _, error) in
             
             DispatchQueue.main.async {
                 guard let data = data else {
@@ -31,7 +45,7 @@ extension APIProtocol {
                     return
                 }
                 
-                if let value = decodeJSON(type: T.self, from: data) {
+                if let value = self?.decodeJSON(type: T.self, from: data) {
                     completionHandler(.success(value))
                 } else {
                     let error = NSError()
@@ -64,7 +78,7 @@ extension APIProtocol {
         return dataTask
     }
     
-    private func decodeJSON<T: Codable>(type: T.Type, from: Data?) ->T? {
+    private func decodeJSON<T: Decodable>(type: T.Type, from: Data?) ->T? {
         
         let decoder = JSONDecoder()
         
@@ -72,9 +86,22 @@ extension APIProtocol {
         do {
             let objects = try decoder.decode(T.self, from: data)
             return objects
-        } catch let jsonError {
-            print("Failed to decode JSON", jsonError.localizedDescription)
-            return nil
+        } catch DecodingError.dataCorrupted(let context) {
+            print(DecodingError.dataCorrupted(context))
+        } catch DecodingError.keyNotFound(let key, let context) {
+            print(DecodingError.keyNotFound(key,context))
+        } catch DecodingError.typeMismatch(let type, let context) {
+            print(DecodingError.typeMismatch(type,context))
+        } catch DecodingError.valueNotFound(let value, let context) {
+            print(DecodingError.valueNotFound(value,context))
+        } catch let error{
+            print(error)
         }
+            
+          return nil
+            
+        
     }
+    
+    
 }

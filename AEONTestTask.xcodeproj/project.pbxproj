@@ -13,10 +13,15 @@
 		2CF7C1632629F345004F3A23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CF7C1612629F345004F3A23 /* LaunchScreen.storyboard */; };
 		2CF7C16E2629F86F004F3A23 /* Signin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C16D2629F86F004F3A23 /* Signin.swift */; };
 		2CF7C1712629F885004F3A23 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C1702629F885004F3A23 /* Login.swift */; };
-		2CF7C1772629F8E2004F3A23 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C1762629F8E2004F3A23 /* RequestProtocol.swift */; };
+		2CF7C1772629F8E2004F3A23 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C1762629F8E2004F3A23 /* RequestManager.swift */; };
 		2CF7C17B2629F973004F3A23 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C17A2629F973004F3A23 /* APIManager.swift */; };
 		2CF7C17F2629FF21004F3A23 /* AEONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C17E2629FF21004F3A23 /* AEONManager.swift */; };
 		2CF7C183262A15A6004F3A23 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C182262A15A6004F3A23 /* AutorizationViewController.swift */; };
+		2CF7C189262AD3FC004F3A23 /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C188262AD3FC004F3A23 /* Payments.swift */; };
+		2CF7C19A262AE07A004F3A23 /* PaymentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C198262AE07A004F3A23 /* PaymentsTableViewController.swift */; };
+		2CF7C19B262AE07A004F3A23 /* PaymentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF7C199262AE07A004F3A23 /* PaymentsTableViewController.xib */; };
+		2CF7C1A1262AE63E004F3A23 /* PaymentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C19F262AE63D004F3A23 /* PaymentsViewCell.swift */; };
+		2CF7C1A2262AE63E004F3A23 /* PaymentsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF7C1A0262AE63E004F3A23 /* PaymentsViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +33,15 @@
 		2CF7C1642629F345004F3A23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CF7C16D2629F86F004F3A23 /* Signin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signin.swift; sourceTree = "<group>"; };
 		2CF7C1702629F885004F3A23 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		2CF7C1762629F8E2004F3A23 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		2CF7C1762629F8E2004F3A23 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		2CF7C17A2629F973004F3A23 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		2CF7C17E2629FF21004F3A23 /* AEONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEONManager.swift; sourceTree = "<group>"; };
 		2CF7C182262A15A6004F3A23 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
+		2CF7C188262AD3FC004F3A23 /* Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
+		2CF7C198262AE07A004F3A23 /* PaymentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsTableViewController.swift; sourceTree = "<group>"; };
+		2CF7C199262AE07A004F3A23 /* PaymentsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentsTableViewController.xib; sourceTree = "<group>"; };
+		2CF7C19F262AE63D004F3A23 /* PaymentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsViewCell.swift; sourceTree = "<group>"; };
+		2CF7C1A0262AE63E004F3A23 /* PaymentsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentsViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +76,8 @@
 			children = (
 				2CF7C1562629F342004F3A23 /* AppDelegate.swift */,
 				2CF7C1582629F342004F3A23 /* SceneDelegate.swift */,
-				2CF7C182262A15A6004F3A23 /* AutorizationViewController.swift */,
+				2CF7C1A7262AEFE7004F3A23 /* Autorization */,
+				2CF7C1A4262AEA8A004F3A23 /* PaymentTableView */,
 				2CF7C1752629F8CA004F3A23 /* Managers */,
 				2CF7C1732629F8A5004F3A23 /* Models */,
 				2CF7C15F2629F345004F3A23 /* Assets.xcassets */,
@@ -81,6 +92,7 @@
 			children = (
 				2CF7C16D2629F86F004F3A23 /* Signin.swift */,
 				2CF7C1702629F885004F3A23 /* Login.swift */,
+				2CF7C188262AD3FC004F3A23 /* Payments.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -88,11 +100,38 @@
 		2CF7C1752629F8CA004F3A23 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				2CF7C1762629F8E2004F3A23 /* RequestProtocol.swift */,
+				2CF7C1762629F8E2004F3A23 /* RequestManager.swift */,
 				2CF7C17A2629F973004F3A23 /* APIManager.swift */,
 				2CF7C17E2629FF21004F3A23 /* AEONManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		2CF7C1A4262AEA8A004F3A23 /* PaymentTableView */ = {
+			isa = PBXGroup;
+			children = (
+				2CF7C198262AE07A004F3A23 /* PaymentsTableViewController.swift */,
+				2CF7C199262AE07A004F3A23 /* PaymentsTableViewController.xib */,
+				2CF7C1A5262AEA9C004F3A23 /* Cell */,
+			);
+			path = PaymentTableView;
+			sourceTree = "<group>";
+		};
+		2CF7C1A5262AEA9C004F3A23 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2CF7C19F262AE63D004F3A23 /* PaymentsViewCell.swift */,
+				2CF7C1A0262AE63E004F3A23 /* PaymentsViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2CF7C1A7262AEFE7004F3A23 /* Autorization */ = {
+			isa = PBXGroup;
+			children = (
+				2CF7C182262A15A6004F3A23 /* AutorizationViewController.swift */,
+			);
+			path = Autorization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +192,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CF7C1632629F345004F3A23 /* LaunchScreen.storyboard in Resources */,
+				2CF7C1A2262AE63E004F3A23 /* PaymentsViewCell.xib in Resources */,
+				2CF7C19B262AE07A004F3A23 /* PaymentsTableViewController.xib in Resources */,
 				2CF7C1602629F345004F3A23 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,10 +207,13 @@
 			files = (
 				2CF7C1712629F885004F3A23 /* Login.swift in Sources */,
 				2CF7C17F2629FF21004F3A23 /* AEONManager.swift in Sources */,
+				2CF7C1A1262AE63E004F3A23 /* PaymentsViewCell.swift in Sources */,
 				2CF7C1572629F342004F3A23 /* AppDelegate.swift in Sources */,
-				2CF7C1772629F8E2004F3A23 /* RequestProtocol.swift in Sources */,
+				2CF7C1772629F8E2004F3A23 /* RequestManager.swift in Sources */,
+				2CF7C19A262AE07A004F3A23 /* PaymentsTableViewController.swift in Sources */,
 				2CF7C1592629F342004F3A23 /* SceneDelegate.swift in Sources */,
 				2CF7C183262A15A6004F3A23 /* AutorizationViewController.swift in Sources */,
+				2CF7C189262AD3FC004F3A23 /* Payments.swift in Sources */,
 				2CF7C16E2629F86F004F3A23 /* Signin.swift in Sources */,
 				2CF7C17B2629F973004F3A23 /* APIManager.swift in Sources */,
 			);

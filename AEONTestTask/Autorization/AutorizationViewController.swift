@@ -90,15 +90,24 @@ class AutorizationViewController: UIViewController {
         
         guard let login = loginTextField.text,
               let password = passwordTextField.text else { return }
-        
-        apiManager.signin(login: login, password: password) { (result) in
+
+        apiManager.signin(login: login, password: password) { [weak self] (result) in
             switch result {
             case .success(let token):
                 print(token.response.token)
+                self?.presentPaymentController(token: token.response.token)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+        
+    }
+    
+    private func presentPaymentController(token: String) {
+        let vc = PaymentsTableViewController()
+        vc.token = token
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     private func setupUI() {

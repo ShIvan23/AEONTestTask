@@ -23,8 +23,8 @@ final class AEONManager: RequestProtocol, APIProtocol {
         self.init(sessionConfiguration: URLSessionConfiguration.default)
     }
     
-    func signin(login: String, password: String, completion: @escaping (Result<Objects, Error>) -> Void) {
-        let request = signinRequest()
+    func signin(login: String, password: String, completion: @escaping (Result<Login, Error>) -> Void) {
+        let request = signinRequest(login: login, password: password)
         fetch(request: request, completionHandler: completion)
     }
     

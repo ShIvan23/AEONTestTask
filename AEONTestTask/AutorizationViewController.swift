@@ -90,6 +90,15 @@ class AutorizationViewController: UIViewController {
         
         guard let login = loginTextField.text,
               let password = passwordTextField.text else { return }
+        
+        apiManager.signin(login: login, password: password) { (result) in
+            switch result {
+            case .success(let token):
+                print(token.response.token)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     private func setupUI() {

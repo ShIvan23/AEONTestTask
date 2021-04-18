@@ -76,6 +76,20 @@ class AutorizationViewController: UIViewController {
         setupLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        clearTextFields()
+    }
+    
+    // MARK: - Override Methods
+    // MARK: - Override Methods
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        view.endEditing(true)
+    }
+    
     // MARK: - Private Methods
     @objc private func inputText() {
         
@@ -90,7 +104,7 @@ class AutorizationViewController: UIViewController {
         
         guard let login = loginTextField.text,
               let password = passwordTextField.text else { return }
-
+        
         apiManager.signin(login: login, password: password) { [weak self] (result) in
             switch result {
             case .success(let token):
@@ -103,11 +117,19 @@ class AutorizationViewController: UIViewController {
         
     }
     
+    private func clearTextFields() {
+        loginTextField.text = ""
+        passwordTextField.text = ""
+        loginButton.isEnabled = false
+        loginButton.alpha = 0.3
+    }
+    
     private func presentPaymentController(token: String) {
         let vc = PaymentsTableViewController()
         vc.token = token
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true, completion: nil)
     }
     
     private func setupUI() {
@@ -124,17 +146,17 @@ class AutorizationViewController: UIViewController {
         
         NSLayoutConstraint.activate([autorizationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topAndBottomInsets),
                                      autorizationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        
+                                     
                                      loginTextField.topAnchor.constraint(equalTo: autorizationLabel.bottomAnchor, constant: 30),
                                      loginTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leftAndRightInsets),
                                      loginTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -leftAndRightInsets),
                                      loginTextField.heightAnchor.constraint(equalToConstant: heightTextFields),
-        
+                                     
                                      passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 20),
                                      passwordTextField.leadingAnchor.constraint(equalTo: loginTextField.leadingAnchor),
                                      passwordTextField.trailingAnchor.constraint(equalTo: loginTextField.trailingAnchor),
                                      passwordTextField.heightAnchor.constraint(equalToConstant: heightTextFields),
-        
+                                     
                                      loginButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -topAndBottomInsets * 2),
                                      loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      loginButton.widthAnchor.constraint(equalToConstant: 200)])

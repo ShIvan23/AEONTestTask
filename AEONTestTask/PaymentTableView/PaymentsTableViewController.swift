@@ -32,6 +32,9 @@ class PaymentsTableViewController: UITableViewController {
             switch result {
             case .success(let payments):
                 self?.paymentsArray = payments.response
+                    .filter ({$0.currency != nil &&
+                                $0.currency != "" })
+                
                 self?.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)

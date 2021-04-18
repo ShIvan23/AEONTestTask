@@ -31,14 +31,22 @@ class PaymentsViewCell: UITableViewCell {
         operationLabel.text = payment.desc
         operationLabel.lineBreakMode = .byWordWrapping
         operationLabel.numberOfLines = 0
+       
         guard let intervalFloat = payment.created else { return }
-        let interval = TimeInterval(intervalFloat)
-        let date = Date.init(timeIntervalSince1970: interval)
-        dateLabel.text = "\(date)"
+        dateLabel.text = formateDate(floatTime: intervalFloat)
+        
         currencyLabel.text = payment.currency
         
         guard let amount = payment.amount else { return }
         amountLabel.text = String(describing: amount)
+    }
+    
+    private func formateDate(floatTime: Float) -> String {
+        let interval = TimeInterval(floatTime)
+        let date = Date.init(timeIntervalSince1970: interval)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        return dateFormatter.string(from: date)
     }
     
 }

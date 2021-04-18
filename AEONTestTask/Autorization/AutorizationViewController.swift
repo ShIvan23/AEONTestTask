@@ -83,7 +83,6 @@ class AutorizationViewController: UIViewController {
     }
     
     // MARK: - Override Methods
-    // MARK: - Override Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
@@ -110,11 +109,10 @@ class AutorizationViewController: UIViewController {
             case .success(let token):
                 print(token.response.token)
                 self?.presentPaymentController(token: token.response.token)
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure(_):
+                self?.showAlert()
             }
         }
-        
     }
     
     private func clearTextFields() {

@@ -22,6 +22,7 @@
 		2CF7C19B262AE07A004F3A23 /* PaymentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF7C199262AE07A004F3A23 /* PaymentsTableViewController.xib */; };
 		2CF7C1A1262AE63E004F3A23 /* PaymentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C19F262AE63D004F3A23 /* PaymentsViewCell.swift */; };
 		2CF7C1A2262AE63E004F3A23 /* PaymentsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF7C1A0262AE63E004F3A23 /* PaymentsViewCell.xib */; };
+		2CF7C1BF262C78EC004F3A23 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7C1BE262C78EC004F3A23 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		2CF7C199262AE07A004F3A23 /* PaymentsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentsTableViewController.xib; sourceTree = "<group>"; };
 		2CF7C19F262AE63D004F3A23 /* PaymentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsViewCell.swift; sourceTree = "<group>"; };
 		2CF7C1A0262AE63E004F3A23 /* PaymentsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentsViewCell.xib; sourceTree = "<group>"; };
+		2CF7C1BE262C78EC004F3A23 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				2CF7C16D2629F86F004F3A23 /* Signin.swift */,
 				2CF7C1702629F885004F3A23 /* Login.swift */,
 				2CF7C188262AD3FC004F3A23 /* Payments.swift */,
+				2CF7C1BD262C78DB004F3A23 /* Extensions */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,6 +135,14 @@
 				2CF7C182262A15A6004F3A23 /* AutorizationViewController.swift */,
 			);
 			path = Autorization;
+			sourceTree = "<group>";
+		};
+		2CF7C1BD262C78DB004F3A23 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2CF7C1BE262C78EC004F3A23 /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +220,7 @@
 				2CF7C17F2629FF21004F3A23 /* AEONManager.swift in Sources */,
 				2CF7C1A1262AE63E004F3A23 /* PaymentsViewCell.swift in Sources */,
 				2CF7C1572629F342004F3A23 /* AppDelegate.swift in Sources */,
+				2CF7C1BF262C78EC004F3A23 /* UIViewController+Extensions.swift in Sources */,
 				2CF7C1772629F8E2004F3A23 /* RequestManager.swift in Sources */,
 				2CF7C19A262AE07A004F3A23 /* PaymentsTableViewController.swift in Sources */,
 				2CF7C1592629F342004F3A23 /* SceneDelegate.swift in Sources */,

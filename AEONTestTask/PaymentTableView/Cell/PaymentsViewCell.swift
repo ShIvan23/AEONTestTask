@@ -26,4 +26,19 @@ class PaymentsViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK: - Puplic Methods
+    func createCell(payment: Response) {
+        operationLabel.text = payment.desc
+        operationLabel.lineBreakMode = .byWordWrapping
+        operationLabel.numberOfLines = 0
+        guard let intervalFloat = payment.created else { return }
+        let interval = TimeInterval(intervalFloat)
+        let date = Date.init(timeIntervalSince1970: interval)
+        dateLabel.text = "\(date)"
+        currencyLabel.text = payment.currency
+        
+        guard let amount = payment.amount else { return }
+        amountLabel.text = String(describing: amount)
+    }
+    
 }

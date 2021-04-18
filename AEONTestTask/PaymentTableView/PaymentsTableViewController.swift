@@ -9,8 +9,6 @@ import UIKit
 
 class PaymentsTableViewController: UITableViewController {
     
-//    let array = ["First", "Second", "Third"]
-    
     // MARK: - Public Priperties
     var token: String!
     
@@ -24,11 +22,7 @@ class PaymentsTableViewController: UITableViewController {
         
         tableView.register(UINib(nibName: "PaymentsViewCell", bundle: nil), forCellReuseIdentifier: "PaymentsCell")
         getPayments()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
+        setupLayout()
     }
     
     // MARK: - Private Methods
@@ -37,13 +31,17 @@ class PaymentsTableViewController: UITableViewController {
             
             switch result {
             case .success(let payments):
-                print(payments)
                 self?.paymentsArray = payments.response
                 self?.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    private func setupLayout() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 300
     }
 
     // MARK: - Table view data source
@@ -62,19 +60,16 @@ class PaymentsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentsCell", for: indexPath) as! PaymentsViewCell
 
-//        cell.textLabel?.text = paymentsArray[indexPath.row].desc
-//        let floatt = paymentsArray[indexPath.row].created!
-//        let interval = TimeInterval(floatt)
-//        let date = Date.init(timeIntervalSince1970: interval)
-//        cell.textLabel?.text = "\(date)"
+        let payment = paymentsArray[indexPath.row]
+        cell.createCell(payment: payment)
 
         return cell
     }
     
     
     // MARK: - Table view delegate
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     /*

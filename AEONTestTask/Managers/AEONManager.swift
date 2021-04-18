@@ -13,6 +13,7 @@ final class AEONManager {
     private let requestManager: RequestProtocol = RequestManager()
     private let apiManager: APIProtocol = APIManager()
     
+    // MARK: - Puplic Methods
     func signin(login: String, password: String, completion: @escaping (Result<Login, Error>) -> Void) {
         let request = requestManager.signinRequest(login: login, password: password)
         apiManager.fetch(request: request, completionHandler: completion)
@@ -22,5 +23,4 @@ final class AEONManager {
         let request = requestManager.paymentsRequest(token: token)
         apiManager.fetch(request: request, completionHandler: completion)
     }
-    
 }

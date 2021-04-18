@@ -19,8 +19,10 @@ protocol RequestProtocol {
 
 final class RequestManager: RequestProtocol {
     
+    // MARK: - Private Properties
     private var header = ["app-key" : "12345", "v" : "1"]
     
+    // MARK: - Public Methods
     func signinRequest(login: String, password: String) -> URLRequest {
         let url = URL(string: AddressesURLs.login.rawValue)!
         var request = URLRequest(url: url)

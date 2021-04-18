@@ -19,12 +19,14 @@ protocol APIProtocol {
 
 final class APIManager: APIProtocol {
     
+    //MARK: - Puplic Properties
     var sessionConfiguration: URLSessionConfiguration
     
     lazy var session: URLSession = {
         return URLSession(configuration: self.sessionConfiguration)
     }()
     
+    // MARK: - Initializers
     init(sessionConfiguration: URLSessionConfiguration) {
         self.sessionConfiguration = sessionConfiguration
     }
@@ -33,6 +35,7 @@ final class APIManager: APIProtocol {
         self.init(sessionConfiguration: URLSessionConfiguration.default)
     }
     
+    // MARK: - Puplic Methods
     func fetch<T: Decodable>(request: URLRequest, completionHandler: @escaping (Result<T, Error>) -> Void) {
         
         let dataTask = JSONTask(request: request) { [weak self] (data, _, error) in
@@ -56,6 +59,7 @@ final class APIManager: APIProtocol {
         dataTask.resume()
     }
     
+    // MARK: - Private Methods
     private func JSONTask(request: URLRequest, completionHandler: @escaping JSONCompletionHandler) -> JSONTask {
         
         let dataTask = session.dataTask(with: request) { (data, response, error) in
@@ -68,10 +72,8 @@ final class APIManager: APIProtocol {
             
             switch HTTPResponse.statusCode {
             case 200:
-                print("statusCode = \(HTTPResponse.statusCode)")
                 completionHandler(data, HTTPResponse, nil)
             default:
-                print("statusCode = \(HTTPResponse.statusCode)")
                 completionHandler(nil, HTTPResponse, error)
             }
         }
@@ -99,9 +101,5 @@ final class APIManager: APIProtocol {
         }
             
           return nil
-            
-        
     }
-    
-    
 }

@@ -14,17 +14,7 @@ class PaymentsViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak var roundedView: UIView!
     
     // MARK: - Puplic Methods
     func createCell(payment: Response) {
@@ -39,6 +29,8 @@ class PaymentsViewCell: UITableViewCell {
         
         guard let amount = payment.amount else { return }
         amountLabel.text = String(describing: amount)
+        
+        roundedView.layer.cornerRadius = roundedView.frame.height / 2
     }
     
     private func formateDate(floatTime: Float) -> String {

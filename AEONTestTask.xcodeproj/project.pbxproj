@@ -82,6 +82,7 @@
 				2CF7C1A4262AEA8A004F3A23 /* PaymentTableView */,
 				2CF7C1752629F8CA004F3A23 /* Managers */,
 				2CF7C1732629F8A5004F3A23 /* Models */,
+				2CF7C1BD262C78DB004F3A23 /* Extensions */,
 				2CF7C15F2629F345004F3A23 /* Assets.xcassets */,
 				2CF7C1612629F345004F3A23 /* LaunchScreen.storyboard */,
 				2CF7C1642629F345004F3A23 /* Info.plist */,
@@ -95,7 +96,6 @@
 				2CF7C16D2629F86F004F3A23 /* Signin.swift */,
 				2CF7C1702629F885004F3A23 /* Login.swift */,
 				2CF7C188262AD3FC004F3A23 /* Payments.swift */,
-				2CF7C1BD262C78DB004F3A23 /* Extensions */,
 			);
 			path = Models;
 			sourceTree = "<group>";
